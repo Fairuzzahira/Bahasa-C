@@ -1,35 +1,28 @@
 #include <stdio.h>
  
-int binarySearch(int array[], int CariAngka, int left, int right) {//int left dan int right berfungsi untuk mengeksekusi rumus dari teori binary search yaitu memeriksa data dengan cara memeriksa nilai tengah.
-  if (right >= left) {//fungsi binarysearch
-    int mid = left + (right - left) / 2;//rumus binarysearch
- 
-    // Jika menemukan angka tengah maka return mid
-    if (array[mid] == CariAngka)
-      return mid;
- 
-    // Cari angka pada bagian kiri
-    if (array[mid] > CariAngka)
-      return binarySearch(array, CariAngka, left, mid - 1);
- 
-    // Cari angka pada bagian kanan
-    return binarySearch(array, CariAngka, mid + 1, right);
-  }
- 
-  return -1;
-}
- 
 int main() {
-  int array[] = {7, 11, 12, 23, 29, 32, 38};
-  int n = sizeof(array) / sizeof(array[0]); //rumus simpul
-  int CariAngka = 32; //angka yang ingin dicari
-  int hasil = binarySearch(array, CariAngka, 0, n - 1);
-  
-  if (hasil == -1){
-    printf("Data tidak ditemukan\n");
+  int data[100], cari, i, n;
+ 
+  printf("Masukkan banyaknya jumlah data : ");
+  scanf("%d", &n);
+ 
+  printf("Input setiap data integer sebanyak %d :\n", n);
+ 
+  for (i = 0; i < n; i++){
+    scanf("%d", &data[i]);
   }
-  else{
-    printf("Angka %d ditemukan pada index %d\n", CariAngka, hasil);
+ 
+  printf("Input data yang ingin dicari: ");
+  scanf("%d", &cari);
+ 
+  for (i = 0; i < n; i++) {
+    if (data[i] == cari) {
+      printf("%d berada di indeks ke %d.\n", cari, i+1);
+      break;
+    }
+  }
+  if (i == n){
+    printf("%d tidak ada.\n", cari);
   }
   
   return 0;
